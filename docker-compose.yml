@@ -1,0 +1,21 @@
+services:
+  hydra-bridge:
+    build: .
+    image: hydra-bridge:local
+    # Production-style: expose to other containers, not host
+    expose:
+      - "8080"
+    # Use env_file for config; avoid inlining secrets
+    env_file:
+      - .env
+    # Start ordering: requires 'hydra' to be part of the same compose project
+    depends_on:
+      - hydra
+    restart: unless-stopped
+    networks:
+      - idp
+      - proxy
+
+networks:
+  idp: {}
+  proxy: {}

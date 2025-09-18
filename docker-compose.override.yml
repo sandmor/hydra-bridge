@@ -1,0 +1,9 @@
+services:
+  hydra-bridge:
+    # Dev-friendly overrides
+    ports:
+      - "8080:8080"
+    # Uncomment for live reload with tsx
+    # volumes:
+    #   - ./src:/app/src
+    # command: ["npm", "run", "dev"]
